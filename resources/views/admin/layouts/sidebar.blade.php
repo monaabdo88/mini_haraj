@@ -17,29 +17,17 @@
                     <li class="">
                         <a href="{{url('/admin/settings')}}"><i class="menu-icon fa fa-cogs"></i>Settings</a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Categories</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><a href="{{url('/admin/categories')}}">All Categories</a></li>
-                            <li><a href="{{url('/admin/categories/create')}}">Add Category</a></li>
-                        </ul>
+                    <li class="">
+                        <a href="{{url('/admin/categories')}}"><i class="menu-icon fa fa-table"></i>Categories</a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Posts</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><a href="{{url('/admin/posts')}}">All Posts</a></li>
-                            <li><a href="{{url('/admin/posts/create')}}">Add Post</a></li>
-                        </ul>
+                    <li class="">
+                        <a href="{{url('/admin/posts')}}"> <i class="menu-icon fa fa-th"></i>Posts</a>
                     </li>
                     <li>
                         <a href="#"> <i class="menu-icon fa fa-comments"></i>Comments</a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Users</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><a href="forms-basic.html">All Users</a></li>
-                            <li><a href="forms-advanced.html">Add User</a></li>
-                        </ul>
+                    <li>
+                        <a href="#"> <i class="menu-icon fa fa-users"></i>Users</a>
                     </li>
                     <li>
                         <a href="#"> <i class="menu-icon fa fa-envelope"></i>Mails</a>

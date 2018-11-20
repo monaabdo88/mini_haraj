@@ -5,17 +5,15 @@
 
 @endsection
 @section('title')
-    All Categories
-    @endsection
+Categories Trash
+@endsection
 @section('content')
     <div class="row">
 
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">All Categories</strong>
-                     <a href="{{url('admin/catsTrash/')}}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i> Trash</a>
-                     <a href="{{url('admin/categories/create')}}" class="btn btn-primary pull-right">Add Category <i class="fa fa-plus"></i></a>
+                    <strong class="card-title">Categories Trash</strong>
                 </div>
                 <div class="card-body">
                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -42,8 +40,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{url('admin/categories/'.$cat->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                    <a href="{{ route('categories.delete',['id'=>$cat->id]) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                    <a href="{{route('categories.restore',['id'=>$cat->id])}}" class="btn btn-primary"><i class="fa fa-refresh"></i></a>
+                                    <a href="{{ route('categories.kill',['id'=>$cat->id]) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -53,7 +51,7 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection
 @section('script')
     <script src="{{asset('admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>

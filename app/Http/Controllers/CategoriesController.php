@@ -56,6 +56,7 @@ class CategoriesController extends Controller
             'status'    => $request->status,
             'type'      => $request->type,
             'image'     => $img_new,
+            'slug'      => str_slug($request->name)
         ];
         $cats = Category::create($data);
         Session::flash('success','Category Added Successfully');
@@ -81,7 +82,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $main_cats = Category::where(['type'=> 0,'id'=> !$id])->get();
+        $main_cats = Category::where('type',0)->where('id','!=',$id)->get();
         $cat = Category::findOrFail($id);
         return view('admin.categories.edit')->with(['cat'=>$cat,'main_cats'=>$main_cats]);
     }
@@ -107,6 +108,7 @@ class CategoriesController extends Controller
             'tags'      => $request->tags,
             'type'      => $request->type,
             'status'    => $request->status,
+            'slug'      => str_slug($request->name)
         ];
         if($request->cat_img) {
             if ($request->hasFile('cat_img')) {
@@ -130,6 +132,25 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cat = Category::findOrFail($id);
+        $cat->delete();
+        Session::flash('success','Category Deleted Successfully');
+        return redirect('/admin/categories/');
+    }
+    public function catsTrash(){
+        $cats = Category::onlyTrashed()->get();
+        return view('admin.categories.trashed')->with('cats',$cats);
+    }
+    public function kill($id){
+        $cat = Category::withTrashed()->where('id',$id)->first();
+        $cat->forceDelete();
+        Session::flash('success','Category Deleted Successfully');
+        return redirect()->back();
+    }
+    public function restore($id){
+        $cat = Category::withTrashed()->where('id',$id)->first();
+        $cat->restore();
+        Session::flash('success','Category Had been restore Successfully');
+        return redirect()->back();
     }
 }

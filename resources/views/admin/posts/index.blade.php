@@ -5,17 +5,17 @@
 
 @endsection
 @section('title')
-    All Categories
-    @endsection
+    All Posts
+@endsection
 @section('content')
     <div class="row">
 
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">All Categories</strong>
-                     <a href="{{url('admin/catsTrash/')}}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i> Trash</a>
-                     <a href="{{url('admin/categories/create')}}" class="btn btn-primary pull-right">Add Category <i class="fa fa-plus"></i></a>
+                    <strong class="card-title">All Posts</strong>
+                    <a href="{{url('admin/postsTrash/')}}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i> Trash</a>
+                    <a href="{{url('admin/posts/create')}}" class="btn btn-primary pull-right">Add Post <i class="fa fa-plus"></i></a>
                 </div>
                 <div class="card-body">
                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -29,21 +29,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($cats as $cat)
+                        @foreach($posts as $post)
                             <tr>
-                                <td>{{$cat->id}}</td>
-                                <td><img src="{{asset('uploads/'.$cat->image)}}" class="img-responsive img-thumbnail" width="150"/></td>
-                                <td>{{$cat->name}}</td>
+                                <td>{{$post->id}}</td>
+                                <td><img src="{{asset('uploads/'.$post->featured)}}" class="img-responsive img-thumbnail" width="150"/></td>
+                                <td>{{$post->title}}</td>
                                 <td>
-                                    @if($cat->status == 0)
+                                    @if($post->status == 0)
                                         <button class="btn btn-warning">Not Active</button>
                                     @else
                                         <button class="btn btn-primary">Active</button>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{url('admin/categories/'.$cat->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                    <a href="{{ route('categories.delete',['id'=>$cat->id]) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                    <a href="{{url('admin/posts/'.$post->id.'/edit')}}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ route('posts.delete',['id'=>$post->id]) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection
 @section('script')
     <script src="{{asset('admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
