@@ -39,12 +39,33 @@
             </span>
         @endif
     </div>
+    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+        <label for="name" class="col-md-4 control-label pull-left text-center">Post Tags</label>
+        <div class="col-md-8">
+            @foreach($tags as $tag)
+                <input type="checkbox" name="tags[]" value="{{$tag->id}}"
+                @foreach($post->tags as $t)
+                    @if($t->id == $tag->id)
+                        checked
+                    @endif
+                @endforeach
+                > {{$tag->tag}} <br/>
+            @endforeach
+        </div>
+    </div>
     <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
         <label for="image" class="col-md-4 control-label pull-left text-center">Post Category</label>
         <div class="col-md-8">
             <select name="type" class="form-control">
                 @foreach($cats as $main)
-                    <option value="{{$main->id}}" {{ (isset($post->category_id) && $post->category_id == $main->id)? 'selected' : '' }}>{{$main->name}}</option>
+                    <option value="{{$main->id}}"
+                            {{ (isset($post->category_id) && $post->category_id == $main->id)? 'selected' : '' }}>
+                        @if($main->type != 0 )
+                            -- {{$main->name}}
+                            @else
+                        {{$main->name}}
+                            @endif
+                    </option>
                 @endforeach
             </select>
             <br/>

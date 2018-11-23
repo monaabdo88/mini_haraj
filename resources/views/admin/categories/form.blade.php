@@ -51,6 +51,7 @@
             </span>
         @endif
     </div>
+</div>
     <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
         <label for="image" class="col-md-4 control-label pull-left text-center">Category Type</label>
         <div class="col-md-8">

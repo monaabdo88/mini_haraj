@@ -18,10 +18,12 @@ Route::get('/home', function () {
     return view('home');
 });
 Auth::routes();
-Route::group(['prefix'=>'admin','middleware'=>['auth','web']],function(){
+Route::group(['prefix'=>'admin','middleware'=>['auth','web','admin']],function(){
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 	Route::resource('/categories','CategoriesController');
-	Route::resource('/posts','PostsController');	
+	Route::resource('/tags','TagController');
+	Route::resource('/posts','PostsController');
+	Route::resource('/users','UsersController');
 	Route::get('/settings','SettingsController@index');
 	Route::match(['put', 'patch'],'/settings/edit','SettingsController@update');
 	Route::get('/categories/delete/{id}',[
@@ -48,8 +50,25 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','web']],function(){
         'uses' => 'PostsController@restore',
         'as' => 'posts.restore'
     ]);
+    Route::get('/tags/delete/{id}',[
+        'uses' => 'TagController@destroy',
+        'as' => 'tags.delete'
+    ]);
+    Route::get('/tags/kill/{id}',[
+        'uses' => 'TagController@kill',
+        'as' => 'tags.kill'
+    ]);
+    Route::get('/tags/restore/{id}',[
+        'uses' => 'TagController@restore',
+        'as' => 'tags.restore'
+    ]);
+    Route::get('/users/delete/{id}',[
+        'uses' => 'UsersController@destroy',
+        'as' => 'users.delete'
+    ]);
     Route::get('/catsTrash','CategoriesController@catsTrash');
     Route::get('/postsTrash','PostsController@postsTrash');
+    Route::get('/tagsTrash','TagController@tagsTrash');
 });
 
 Auth::routes();

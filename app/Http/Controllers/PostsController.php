@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -28,7 +29,8 @@ class PostsController extends Controller
     public function create()
     {
         $cats = Category::all();
-        return view('admin.posts.create')->with('cats',$cats);
+        $tags = Tag::all();
+        return view('admin.posts.create')->with(['cats'=>$cats,'tags'=>$tags]);
     }
 
     /**
@@ -42,7 +44,8 @@ class PostsController extends Controller
         $this->validate($request,[
             'name'  => 'required|min:3',
             'desc'  => 'required',
-            'featured' => 'required|image|mimes:jpg,png,jpeg,gif|max:1000'
+            'featured' => 'required|image|mimes:jpg,png,jpeg,gif|max:1000',
+            'tags' => 'required'
         ]);
         if($request->hasFile('featured')) {
             $image = $request->featured;
@@ -51,12 +54,14 @@ class PostsController extends Controller
         }
         $data = [
             'title'      => $request->name,
-            'content'      => $request->desc, 'status'    => $request->status,
-            'category_id'      => $request->type,
-            'featured'     => $img_new,
-            'slug'      => str_slug($request->name)
+            'content'    => $request->desc,
+            'status'     => $request->status,
+            'category_id'=> $request->type,
+            'featured'   => $img_new,
+            'slug'       => str_slug($request->name)
         ];
-        $cats = Post::create($data);
+        $post = Post::create($data);
+        $post->tags()->attach($request->tags);
         Session::flash('success','Post Added Successfully');
         return redirect('/admin/posts');
     }
@@ -82,7 +87,8 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($id);
         $cats = Category::all();
-        return view('admin.posts.edit')->with(['post'=>$post,'cats'=>$cats]);
+        $tags = Tag::all();
+        return view('admin.posts.edit')->with(['post'=>$post,'cats'=>$cats,'tags'=>$tags]);
     }
 
     /**
@@ -114,8 +120,9 @@ class PostsController extends Controller
             }
             $data['featured'] = $img_new;
         }
-
-        $setting = Post::where('id',$id)->update($data);
+        Post::where('id',$id)->update($data);
+        $post = Post::findOrFail($id);
+        $post->tags()->sync($request->tags);
         Session::flash('success','Post Updated Successfully');
         return redirect('/admin/posts/');
     }

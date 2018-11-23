@@ -23,22 +23,21 @@
                     <li class="">
                         <a href="{{url('/admin/posts')}}"> <i class="menu-icon fa fa-th"></i>Posts</a>
                     </li>
+                    <li class="">
+                        <a href="{{url('/admin/tags')}}"> <i class="menu-icon fa fa-hashtag"></i>Tags</a>
+                    </li>
                     <li>
                         <a href="#"> <i class="menu-icon fa fa-comments"></i>Comments</a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-users"></i>Users</a>
+                        <a href="{{url('/admin/users')}}"> <i class="menu-icon fa fa-users"></i>Users</a>
                     </li>
                     <li>
                         <a href="#"> <i class="menu-icon fa fa-envelope"></i>Mails</a>
                     
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-lock"></i>Admins</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><a href="forms-basic.html">All Admins</a></li>
-                            <li><a href="forms-advanced.html">Add Admin</a></li>
-                        </ul>
+                    <li>
+                        <a href="#"> <i class="menu-icon fa fa-lock"></i>Admins</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
