@@ -38,10 +38,10 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'tag'=>'required|min:3'
+            'tag'  => 'required|min:3'
         ]);
         Tag::create([
-            'tag' => $request->tag
+            'tag'  => $request->tag
         ]);
         Session::flash('success','Tag Added Successfully');
         return redirect('/admin/tags');

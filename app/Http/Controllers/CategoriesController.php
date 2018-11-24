@@ -39,9 +39,9 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'  => 'required|min:3',
-            'desc'  => 'required',
-            'tags'  => 'required',
+            'name'    => 'required|min:3',
+            'desc'    => 'required',
+            'tags'    => 'required',
             'cat_img' => 'required|image|mimes:jpg,png,jpeg,gif|max:1000'
         ]);
         if($request->hasFile('cat_img')) {
@@ -97,9 +97,9 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name'  => 'required|min:3',
-            'desc'  => 'required',
-            'tags'  => 'required',
+            'name'    => 'required|min:3',
+            'desc'    => 'required',
+            'tags'    => 'required',
             'cat_img' => 'image|mimes:jpg,png,jpeg,gif|max:1000'
         ]);
         $data = [
@@ -133,6 +133,9 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $cat = Category::findOrFail($id);
+        foreach ($cat->posts as $post){
+            $post->delete();
+        }
         $cat->delete();
         Session::flash('success','Category Deleted Successfully');
         return redirect('/admin/categories/');
@@ -143,12 +146,18 @@ class CategoriesController extends Controller
     }
     public function kill($id){
         $cat = Category::withTrashed()->where('id',$id)->first();
+        foreach ($cat->posts as $post){
+            $post->forceDelete();
+        }
         $cat->forceDelete();
         Session::flash('success','Category Deleted Successfully');
         return redirect()->back();
     }
     public function restore($id){
         $cat = Category::withTrashed()->where('id',$id)->first();
+        foreach ($cat->posts as $post){
+            $post->restore();
+        }
         $cat->restore();
         Session::flash('success','Category Had been restore Successfully');
         return redirect()->back();

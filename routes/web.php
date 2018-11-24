@@ -70,6 +70,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','web','admin']],function()
     Route::get('/postsTrash','PostsController@postsTrash');
     Route::get('/tagsTrash','TagController@tagsTrash');
 });
-
+Route::group(['middleware'=>['auth','web']],function() {
+    Route::resource('/profile','ProfilesController');
+});
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

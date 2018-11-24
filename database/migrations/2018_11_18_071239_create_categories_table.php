@@ -20,7 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->boolean('status');
             $table->string('image');
             $table->string('tags');
-            $table->string('desc');
+            $table->text('desc');
             $table->string('slug');
             $table->softDeletes();
             $table->timestamps();

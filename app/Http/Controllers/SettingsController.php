@@ -25,7 +25,7 @@ class SettingsController extends Controller
            'site_tags'      => 'required',
            'site_status'    => 'required',
            'site_close'     => 'required',
-           'site_copyright'=> 'required',
+           'site_copyright' => 'required',
            'site_logo'      => 'required|image|mimes:jpg,png,jpeg,gif|max:1000',
        ]);
         if($request->hasFile('site_logo')) {
@@ -45,7 +45,7 @@ class SettingsController extends Controller
             'site_tags'      => $request->site_tags,
             'site_status'    => $request->site_status,
             'site_close'     => $request->site_close,
-            'site_copyright'=> $request->site_copyright,
+            'site_copyright' => $request->site_copyright,
             'site_logo'      => $logo_new,
         ];
         $setting = Settings::where('id',1)->update($data);

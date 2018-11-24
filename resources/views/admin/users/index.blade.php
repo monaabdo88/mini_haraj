@@ -32,7 +32,7 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{$user->id}}</td>
-                                <td><img src="{{asset('uploads/'.$user->profile->avatar)}}" class="img-responsive img-thumbnail" width="150"/></td>
+                                <td><img src="{{asset('uploads/avatar/'.@$user->profile->avatar)}}" class="img-responsive img-thumbnail" width="150"/></td>
                                 <td>{{$user->name}}</td>
                                 <td>
                                     @if($user->admin == 0)

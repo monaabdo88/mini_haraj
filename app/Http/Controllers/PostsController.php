@@ -42,10 +42,9 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'  => 'required|min:3',
-            'desc'  => 'required',
+            'name'     => 'required|min:3',
+            'desc'     => 'required',
             'featured' => 'required|image|mimes:jpg,png,jpeg,gif|max:1000',
-            'tags' => 'required'
         ]);
         if($request->hasFile('featured')) {
             $image = $request->featured;
@@ -101,16 +100,16 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name'  => 'required|min:3',
-            'desc'  => 'required',
-            'featured' => 'image|mimes:jpg,png,jpeg,gif|max:1000'
+            'name'      => 'required|min:3',
+            'desc'      => 'required',
+            'featured'  => 'image|mimes:jpg,png,jpeg,gif|max:1000'
         ]);
         $data = [
-            'title'      => $request->name,
-            'content'      => $request->desc,
-            'category_id'      => $request->type,
-            'status'    => $request->status,
-            'slug'      => str_slug($request->name)
+            'title'       => $request->name,
+            'content'     => $request->desc,
+            'category_id' => $request->type,
+            'status'      => $request->status,
+            'slug'        => str_slug($request->name)
         ];
         if($request->featured) {
             if ($request->hasFile('featured')) {

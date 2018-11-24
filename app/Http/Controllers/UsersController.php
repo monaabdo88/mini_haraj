@@ -38,13 +38,13 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
         User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name'     => $request->name,
+            'email'    => $request->email,
             'password' => bcrypt($request->password),
         ]);
         Session::flash('success','User Added Successfully');

@@ -36,9 +36,6 @@
                         <a href="#"> <i class="menu-icon fa fa-envelope"></i>Mails</a>
                     
                     </li>
-                    <li>
-                        <a href="#"> <i class="menu-icon fa fa-lock"></i>Admins</a>
-                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

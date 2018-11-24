@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
+
 </head>
 <body>
     <div id="app">
@@ -52,6 +54,10 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{url('/profile/'.Auth::user()->id)}}">Profile</a> </li>
+                                    @if(Auth::user()->admin == 1)
+                                        <li><a href="{{ url('/admin/dashboard') }}">Dashboard</a> </li>
+                                        @endif
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -76,5 +82,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset('js/toastr.min.js')}}"></script>
+@yield('script')
 </body>
 </html>

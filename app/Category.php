@@ -11,9 +11,9 @@ class Category extends Model
     protected $fillable = ['name','desc','tags','status','image','type','slug'];
     protected $dates = ['deleted_at'];
     public function posts(){
-    	return $this->hasMany('Horsefly\Post');
+    	return $this->hasMany('App\Post');
     }
     public function images(){
-    	return $this->hasMany('Horsefly\Images');
+    	return $this->hasMany('App\Images');
     }
 }

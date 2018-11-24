@@ -44,11 +44,13 @@
         <div class="col-md-8">
             @foreach($tags as $tag)
                 <input type="checkbox" name="tags[]" value="{{$tag->id}}"
-                @foreach($post->tags as $t)
-                    @if($t->id == $tag->id)
-                        checked
-                    @endif
-                @endforeach
+                @if(isset($post->tags))
+                            @foreach($post->tags as $t)
+                                @if($t->id == $tag->id)
+                                    checked
+                                @endif
+                            @endforeach
+                        @endif
                 > {{$tag->tag}} <br/>
             @endforeach
         </div>
@@ -60,11 +62,7 @@
                 @foreach($cats as $main)
                     <option value="{{$main->id}}"
                             {{ (isset($post->category_id) && $post->category_id == $main->id)? 'selected' : '' }}>
-                        @if($main->type != 0 )
-                            -- {{$main->name}}
-                            @else
                         {{$main->name}}
-                            @endif
                     </option>
                 @endforeach
             </select>
@@ -75,7 +73,7 @@
         <label for="image" class="col-md-4 control-label pull-left text-center">Post Image</label>
 
         <div class="col-md-8">
-            <input accept="image/*" onchange="preview_image(event)" type="file" name="featured">
+            <input accept="image/*" onchange="preview_image(event)" type="file" class="form-control" name="featured">
             <br /><br/>
             @if(isset($post->featured))
                 <img id="output_image" class="img-responsive img-thumbnail col-md-4" src="{{asset('uploads/'.$post->featured)}}" />
@@ -100,6 +98,6 @@
                 <script>
                     toastr.error('{{$error}}');
                 </script>
-@endforeach
-@endif
+            @endforeach
+        @endif
 @endsection
