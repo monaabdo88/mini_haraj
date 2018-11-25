@@ -149,7 +149,6 @@
     </script>
     <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
     <script>
-        CKEDITOR.replace( 'site_close' );
         CKEDITOR.replace( 'tags' );
         CKEDITOR.replace( 'desc' );
     </script>

@@ -3180,8 +3180,10 @@ textarea {
 .header-spacer {
   position: relative;
   width: 100%;
-  height: 118px;
-  background: #fff; }
+  height:80px;
+  background: #fff;
+  z-index:-1;
+}
   @media (max-width: 480px) {
     .header-spacer {
       display: none; } }

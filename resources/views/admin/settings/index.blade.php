@@ -122,7 +122,7 @@
                                 <label for="site_close" class="col-md-4 control-label pull-left text-center">Site Close Message</label>
 
                                 <div class="col-md-8">
-                                    <textarea name="site_close" id="site_close">{{($settings->site_close) ? $settings->site_close :old('site_close')}}</textarea>
+                                    <textarea name="site_close" id="site_close" class="form-control">{{($settings->site_close) ? $settings->site_close :old('site_close')}}</textarea>
                                     <br/>
                                     @if ($errors->has('site_close'))
                                         <span class="help-block text-danger">

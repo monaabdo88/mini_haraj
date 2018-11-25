@@ -3,7 +3,7 @@
         <div class="header-content-wrapper">
             <div class="logo">
                 <div class="logo-text">
-                    <div class="logo-title">{{get_settings()->site_name}}</div>
+                    <div class="logo-title"><a href="{{url('/')}}"> {{get_settings()->site_name}}</a></div>
                 </div>
             </div>
 
@@ -17,10 +17,18 @@
                                 </svg>
                             </span>
                 </a>
-                <ul class="primary-menu-menu" style="overflow: hidden;">
-                    @foreach(get_cats() as $cat)
-                        <li class="">
-                            <a href="{{url('/cats/'.$cat->id)}}">{{$cat->name}}</a>
+                <ul class="primary-menu-menu">
+                    @foreach(get_cats(4) as $cat)
+                        <li>
+                            <a href="{{url('/cats/'.$cat->id)}}">{{$cat->name}}
+                            </a>
+                            @if(getSubCount($cat->id) > 0)
+                                <ul class="dropdown">
+                                        @foreach(get_subCat($cat->id) as $sub)
+                                            <li class="hover-ver2"><a href="{{url('/cats/'.$sub->id)}}">{{$sub->name}}</a></li>
+                                        @endforeach
+                                </ul>
+                            @endif
                         </li>
                     @endforeach
                         @if (Auth::guest())
@@ -28,16 +36,16 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li>
-                                <a href="{{url('/profile/'.Auth::user()->id)}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <!--<ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{url('/profile/'.Auth::user()->id)}}">Profile</a> </li>
+                                <ul class="dropdown">
+                                    <li class="hover-ver2"><a href="{{url('/profile/'.Auth::user()->id)}}">Profile</a> </li>
                                     @if(Auth::user()->admin == 1)
-                                        <li><a href="{{ url('/admin/dashboard') }}">Dashboard</a> </li>
+                                        <li class="hover-ver2"><a href="{{ url('/admin/dashboard') }}">Dashboard</a> </li>
                                     @endif
-                                    <li>
+                                    <li class="hover-ver2">
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -48,7 +56,7 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                </ul>-->
+                                </ul>
                             </li>
                         @endif
                 </ul>
@@ -64,4 +72,3 @@
         </div>
     </div>
 </header>
-<div class="header-spacer"></div>

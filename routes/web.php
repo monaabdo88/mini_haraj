@@ -15,6 +15,8 @@ Route::get('/', [
     'uses' => 'FrontendController@index',
     'as'   => 'index'
 ]);
+Route::get('/post/{slug}','FrontendController@singlePost');
+Route::get('/cats/{slug}','FrontendController@singleCat');
 Route::get('/home', function () {
     return view('home');
 });

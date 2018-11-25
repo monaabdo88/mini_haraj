@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>{{get_settings()->site_name}}</title>
 
+    <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/fonts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/crumina-fonts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/normalize.css')}}">
@@ -13,11 +14,11 @@
 
 
     <!--Plugins styles-->
-
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/jquery.mCustomScrollbar.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/swiper.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/primary-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/magnific-popup.css')}}">
+
 
     <!--Styles for RTL-->
 
@@ -33,10 +34,13 @@
         .text-center{
             text-align: center;
         }
+        .up-container{
+            position: relative;z-index: -1;
+        }
     </style>
-    @if(get_setting()->site_status == 'close')
+    @if(get_settings()->site_status == 'close')
         <div class="alert alert-danger col-md-offset-2 col-md-8" style="margin-top:20%">
-            <p class="text-center"><b>{{get_setting()->site_close}}</b></p>
+            <p class="text-center"><b>{{get_settings()->site_close}}</b></p>
         </div>
         {{die()}}
     @endif
@@ -47,313 +51,8 @@
 
 <div class="content-wrapper">
     @include('includes.header')
-
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8">
-                <article class="hentry post post-standard has-post-thumbnail sticky">
-
-                    <div class="post-thumb">
-                        <img src="app/img/1.png" alt="seo">
-                        <div class="overlay"></div>
-                        <a href="app/img/post1.jpg" class="link-image js-zoom-image">
-                            <i class="seoicon-zoom"></i>
-                        </a>
-                        <a href="#" class="link-post">
-                            <i class="seoicon-link-bold"></i>
-                        </a>
-                    </div>
-
-                    <div class="post__content">
-
-                        <div class="post__content-info">
-
-                            <h2 class="post__title entry-title ">
-                                <a href="15_blog_details.html">The Important & Standard Post Format</a>
-                            </h2>
-
-                            <div class="post-additional-info">
-
-                                        <span class="post__date">
-
-                                            <i class="seoicon-clock"></i>
-
-                                            <time class="published" datetime="2016-04-17 12:00:00">
-                                                April 17, 2016
-                                            </time>
-
-                                        </span>
-
-                                <span class="category">
-                                            <i class="seoicon-tags"></i>
-                                            <a href="#">Video</a>
-                                        </span>
-
-                                <span class="post__comments">
-                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                            6
-                                        </span>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </article>
-            </div>
-            <div class="col-lg-2"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-6">
-                <article class="hentry post post-standard has-post-thumbnail sticky">
-
-                    <div class="post-thumb">
-                        <img src="app/img/2.png" alt="seo">
-                        <div class="overlay"></div>
-                        <a href="app/img/2.png" class="link-image js-zoom-image">
-                            <i class="seoicon-zoom"></i>
-                        </a>
-                        <a href="#" class="link-post">
-                            <i class="seoicon-link-bold"></i>
-                        </a>
-                    </div>
-
-                    <div class="post__content">
-
-                        <div class="post__content-info">
-
-                            <h2 class="post__title entry-title ">
-                                <a href="15_blog_details.html">The Important & Standard Post Format</a>
-                            </h2>
-
-                            <div class="post-additional-info">
-
-                                        <span class="post__date">
-
-                                            <i class="seoicon-clock"></i>
-
-                                            <time class="published" datetime="2016-04-17 12:00:00">
-                                                April 17, 2016
-                                            </time>
-
-                                        </span>
-
-                                <span class="category">
-                                            <i class="seoicon-tags"></i>
-                                            <a href="#">Video</a>
-                                        </span>
-
-                                <span class="post__comments">
-                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                            6
-                                        </span>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </article>
-            </div>
-            <div class="col-lg-6">
-                <article class="hentry post post-standard has-post-thumbnail sticky">
-
-                    <div class="post-thumb">
-                        <img src="app/img/3.jpg" alt="seo">
-                        <div class="overlay"></div>
-                        <a href="app/img/3.jpg" class="link-image js-zoom-image">
-                            <i class="seoicon-zoom"></i>
-                        </a>
-                        <a href="#" class="link-post">
-                            <i class="seoicon-link-bold"></i>
-                        </a>
-                    </div>
-
-                    <div class="post__content">
-
-                        <div class="post__content-info">
-
-                            <h2 class="post__title entry-title ">
-                                <a href="15_blog_details.html">The Important & Standard Post Format</a>
-                            </h2>
-
-                            <div class="post-additional-info">
-
-                                        <span class="post__date">
-
-                                            <i class="seoicon-clock"></i>
-
-                                            <time class="published" datetime="2016-04-17 12:00:00">
-                                                April 17, 2016
-                                            </time>
-
-                                        </span>
-
-                                <span class="category">
-                                            <i class="seoicon-tags"></i>
-                                            <a href="#">Video</a>
-                                        </span>
-
-                                <span class="post__comments">
-                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                            6
-                                        </span>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </article>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container-fluid">
-        <div class="row medium-padding120 bg-border-color">
-            <div class="container">
-                <div class="col-lg-12">
-                    <div class="offers">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                                <div class="heading">
-                                    <h4 class="h1 heading-title">Laravel 5.3</h4>
-                                    <div class="heading-line">
-                                        <span class="short-line"></span>
-                                        <span class="long-line"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="case-item-wrap">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="app/img/3.jpg" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="app/img/1.png" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">Claritas est etiam processus dynamicus</h6>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                            <img src="app/img/2.png" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="padded-50"></div>
-                    <div class="offers">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                                <div class="heading">
-                                    <h4 class="h1 heading-title">Laravel 5.3</h4>
-                                    <div class="heading-line">
-                                        <span class="short-line"></span>
-                                        <span class="long-line"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="case-item-wrap">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="app/img/2.png" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="app/img/3.jpg" alt="our case">
-                                        </div>
-                                        <h6 class="text-center case-item__title">Claritas est etiam processus dynamicus</h6>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                            <img src="app/img/4.jpg" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="padded-50"></div>
-                    <div class="offers">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                                <div class="heading">
-                                    <h4 class="h1 heading-title">Laravel 5.3</h4>
-                                    <div class="heading-line">
-                                        <span class="short-line"></span>
-                                        <span class="long-line"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="case-item-wrap">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="app/img/5.jpg" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="app/img/2.png" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">Claritas est etiam processus dynamicus</h6>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                            <img src="app/img/6.jpg" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="padded-50"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @yield('content')
     <!-- Subscribe Form -->
-
     <div class="container-fluid bg-green-color">
         <div class="row">
             <div class="container">
@@ -372,9 +71,9 @@
                         </div>
 
                         <div class="images-block">
-                            <img src="app/img/subscr-gear.png" alt="gear" class="gear">
-                            <img src="app/img/subscr1.png" alt="mail" class="mail">
-                            <img src="app/img/subscr-mailopen.png" alt="mail" class="mail-2">
+                            <img src="{{asset('app/img/subscr-gear.png')}}" alt="gear" class="gear">
+                            <img src="{{asset('app/img/subscr1.png')}}" alt="mail" class="mail">
+                            <img src="{{asset('app/img/subscr-mailopen.png')}}" alt="mail" class="mail-2">
                         </div>
                     </div>
                 </div>
@@ -448,19 +147,17 @@
 <!-- End Overlay Search -->
 
 <!-- JS Script -->
-
-<script src="app/js/jquery-2.1.4.min.js"></script>
-<script src="app/js/crum-mega-menu.js"></script>
-<script src="app/js/swiper.jquery.min.js"></script>
-<script src="app/js/theme-plugins.js"></script>
-<script src="app/js/main.js"></script>
-<script src="app/js/form-actions.js"></script>
-
-<script src="app/js/velocity.min.js"></script>
-<script src="app/js/ScrollMagic.min.js"></script>
-<script src="app/js/animation.velocity.min.js"></script>
-
-
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{asset('js/toastr.min.js')}}"></script>
+<script src="{{asset('app/js/jquery-2.1.4.min.js')}}"></script>
+<script src="{{asset('app/js/crum-mega-menu.js')}}"></script>
+<script src="{{asset('app/js/swiper.jquery.min.js')}}"></script>
+<script src="{{asset('app/js/theme-plugins.js')}}"></script>
+<script src="{{asset('app/js/main.js')}}"></script>
+<script src="{{asset('app/js/form-actions.js')}}"></script>
+<script src="{{asset('app/js/velocity.min.js')}}"></script>
+<script src="{{asset('app/js/ScrollMagic.min.js')}}"></script>
+<script src="{{asset('app/js/animation.velocity.min.js')}}"></script
 <!-- ...end JS Script -->
 
 </body>

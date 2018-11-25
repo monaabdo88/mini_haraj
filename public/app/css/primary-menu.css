@@ -50,7 +50,7 @@ License: http://codecanyon.net/licenses
 .primary-menu,
 .primary-menu *{
 	box-sizing:border-box;
-	-moz-box-sizing:border-box; 
+	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 }
 .primary-menu{
@@ -65,8 +65,6 @@ License: http://codecanyon.net/licenses
 }
 
 .primary-menu a{
-	-o-transition: color .3s linear, background .3s linear;
-	-moz-transition: color .3s linear, background .3s linear;
 	-webkit-transition: color .3s linear, background .3s linear;
 	transition: color .3s linear, background .3s linear;
 }
@@ -105,6 +103,7 @@ License: http://codecanyon.net/licenses
 	display: inline-block;
 	padding: 0 13px 35px;
 	position: relative;
+	vertical-align: middle;
 }
 
 @media (max-width: 980px) {
@@ -117,6 +116,7 @@ License: http://codecanyon.net/licenses
 	font-size: 17px;
 	text-transform: capitalize;
 	font-weight: 500;
+	-webkit-transition:all .3s ease;
 	transition: all .3s ease;
 	margin-right: 3px;
 }
@@ -131,6 +131,7 @@ License: http://codecanyon.net/licenses
 	right: 0;
 	bottom: -10px;
 	opacity: 0;
+	-webkit-transition:all .3s linear;
 	transition: all .3s linear;
 }
 
@@ -144,6 +145,7 @@ License: http://codecanyon.net/licenses
 	left: 0;
 	bottom: -10px;
 	opacity: 0;
+	-webkit-transition:all .3s linear;
 	transition: all .3s linear;
 }
 
@@ -196,6 +198,7 @@ License: http://codecanyon.net/licenses
 	background-color: #ffffff;
 	padding: 20px 0 30px;
 	border-radius: 5px;
+	-webkit-box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.16);
 	box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.16);
 	list-style: none;
 	display: none;
@@ -204,6 +207,7 @@ License: http://codecanyon.net/licenses
 @media (max-width: 768px) {
 	.primary-menu-menu ul.dropdown,
 	.primary-menu-menu ul.dropdown li ul.dropdown {
+		-webkit-box-shadow: none;
 		box-shadow: none;
 		padding: 10px 0 10px;
 	}
@@ -213,6 +217,7 @@ License: http://codecanyon.net/licenses
 .primary-menu-menu > li.has-megamenu .megamenu ul > li a i {
 	margin-left: 10px;
 	opacity: 0;
+	-webkit-transition:all .4s ease;
 	transition: all .4s ease;
 	font-size: 12px;
 	color: #e1e1e1;
@@ -226,8 +231,9 @@ License: http://codecanyon.net/licenses
 }
 
 .primary-menu-menu ul.dropdown li ul.dropdown{
-    left: calc(100% - 5px);
-	top: 0;
+	left: -webkit-calc(100% - 5px);
+	left: calc(100% - 5px);
+	top: -20px;
 }
 /* Dropdown items */
 .primary-menu-menu ul.dropdown li{
@@ -244,6 +250,7 @@ License: http://codecanyon.net/licenses
 	padding: 10px 40px 10px 40px;
 	position: relative;
 	color: #acacac;
+	-webkit-transition:all .4s ease-out;
 	transition: all .4s ease-out;
 	display: block;
 }
@@ -272,6 +279,7 @@ License: http://codecanyon.net/licenses
 	top: 0;
 	background-color: #4cc2c0;
 	opacity: 0;
+	-webkit-transition:all .3s ease;
 	transition: all .3s ease;
 }
 
@@ -286,6 +294,7 @@ License: http://codecanyon.net/licenses
 	padding: 10px 0;
 	position: relative;
 	color: #acacac;
+	-webkit-transition:all .4s ease-out;
 	transition: all .4s ease-out;
 	display: block;
 }
@@ -306,6 +315,7 @@ License: http://codecanyon.net/licenses
 /* Hover state (dropdown items) */
 .primary-menu-menu ul.dropdown li:hover > a{
 	color: #4cc2c0;
+	-webkit-transition:all .3s ease;
 	transition: all .3s ease;
 }
 
@@ -330,6 +340,7 @@ License: http://codecanyon.net/licenses
 	top: 13px;
 	right: 20px;
 	font-size: 15px;
+	-webkit-transition:all .3s ease;
 	transition: all .3s ease;
 }
 
@@ -343,7 +354,7 @@ License: http://codecanyon.net/licenses
 
 /* 6 - MEGAMENU
 ======================================*/
-.primary-menu-menu > li > .megamenu{
+.primary-menu-menu > li > .megamenu {
 	width: 100%;
 	padding: 30px 30px 20px;
 	left: 0;
@@ -354,13 +365,14 @@ License: http://codecanyon.net/licenses
 	top: 53px;
 	background-position: right bottom;
 	background-repeat: no-repeat;
+	-webkit-box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.16);
 	box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.16);
 	border-radius: 5px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
 	.primary-menu-menu > li.has-megamenu > .megamenu{
-		top: 100px;
+		top: auto;
 	}
 }
 
@@ -494,11 +506,14 @@ License: http://codecanyon.net/licenses
 	width: 34px;
 	height: 34px;
 	pointer-events: none;
+	-webkit-transition:0.1s;
 	transition: 0.1s;
 }
 
 
 .menu-icon-wrapper.scaled{
+	-webkit-transform: scale(0.5);
+	-ms-transform: scale(0.5);
 	transform: scale(0.5);
 }
 
@@ -530,7 +545,11 @@ License: http://codecanyon.net/licenses
 }
 
 .menu-icon-wrapper svg {
+	-webkit-transform: scale(0.1);
+	-ms-transform: scale(0.1);
 	transform: scale(0.1);
+	-webkit-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
 	transform-origin: 0 0;
 }
 .showhide .mob-menu--title{
@@ -587,8 +606,6 @@ License: http://codecanyon.net/licenses
 	background: #f0f0f0;
 	border-radius: 2px;
 	outline: 0;
-	-o-transition: width 1s ease-out;
-	-moz-transition: width 1s ease-out;
 	-webkit-transition: width 1s ease-out;
 	transition: width 1s ease-out;
 }
@@ -642,43 +659,43 @@ License: http://codecanyon.net/licenses
 .primary-menu.blue .primary-menu-menu > li.active > a,
 .primary-menu.blue .primary-menu-menu > li:hover > a,
 .primary-menu.blue .primary-menu-menu ul.dropdown li:hover > a{
-	color: #4A89DC; 
+	color: #4A89DC;
 }
 /* green */
 .primary-menu.green .primary-menu-menu > li.active > a,
 .primary-menu.green .primary-menu-menu > li:hover > a,
 .primary-menu.green .primary-menu-menu ul.dropdown li:hover > a{
-	color: #37BC9B; 
+	color: #37BC9B;
 }
 /* red */
 .primary-menu.red .primary-menu-menu > li.active > a,
 .primary-menu.red .primary-menu-menu > li:hover > a,
 .primary-menu.red .primary-menu-menu ul.dropdown li:hover > a{
-	color: #E9573F; 
+	color: #E9573F;
 }
 /* orange */
 .primary-menu.orange .primary-menu-menu > li.active > a,
 .primary-menu.orange .primary-menu-menu > li:hover > a,
 .primary-menu.orange .primary-menu-menu ul.dropdown li:hover > a{
-	color: #ff670f; 
+	color: #ff670f;
 }
 /* yellow */
 .primary-menu.yellow .primary-menu-menu > li.active > a,
 .primary-menu.yellow .primary-menu-menu > li:hover > a,
 .primary-menu.yellow .primary-menu-menu ul.dropdown li:hover > a{
-	color: #F6BB42; 
+	color: #F6BB42;
 }
 /* purple */
 .primary-menu.purple .primary-menu-menu > li.active > a,
 .primary-menu.purple .primary-menu-menu > li:hover > a,
 .primary-menu.purple .primary-menu-menu ul.dropdown li:hover > a{
-	color: #967ADC; 
+	color: #967ADC;
 }
 /* pink */
 .primary-menu.pink .primary-menu-menu > li.active > a,
 .primary-menu.pink .primary-menu-menu > li:hover > a,
 .primary-menu.pink .primary-menu-menu ul.dropdown li:hover > a{
-	color: #D770AD; 
+	color: #D770AD;
 }
 
 /* 14 - MOBILE MODE (RESPONSIVE MODE)
@@ -695,19 +712,19 @@ License: http://codecanyon.net/licenses
 	}
 
 	.primary-menu-responsive.primary-menu .google-text{
-	margin-bottom: 120px;
+		margin-bottom: 120px;
 	}
-	
+
 	/* Brand */
 	.primary-menu-responsive .primary-menu-brand{
 		margin: 8px 30px 10px 20px;
 		font-size: 20px;
 		line-height: 1.55;
 	}
-	
+
 	/* Show/hide button */
 
-	
+
 	/* Menu */
 	.primary-menu-responsive .primary-menu-menu{
 		width: 100%;
@@ -726,7 +743,7 @@ License: http://codecanyon.net/licenses
 	.primary-menu-responsive .primary-menu-menu.scrollable > .scrollable-fix{
 		display: block;
 	}
-	
+
 	/* Menu items */
 	.primary-menu-responsive .primary-menu-menu > li{
 		width: 100%;
@@ -742,7 +759,7 @@ License: http://codecanyon.net/licenses
 	.primary-menu-responsive .primary-menu-menu > li:first-child > a{
 		border-top: solid 1px #f0f0f0;
 	}
-	
+
 	/* Dropdown */
 	.primary-menu-responsive .primary-menu-menu ul.dropdown,
 	.primary-menu-responsive .primary-menu-menu ul.dropdown li ul.dropdown{
@@ -761,7 +778,7 @@ License: http://codecanyon.net/licenses
 	.primary-menu-responsive .primary-menu-menu > li {
 		padding-bottom: 0;
 	}
-	
+
 	/* Dropdown items */
 	.primary-menu-responsive .primary-menu-menu ul.dropdown li{
 		position: relative;
@@ -772,7 +789,7 @@ License: http://codecanyon.net/licenses
 	}
 	.primary-menu-responsive .primary-menu-menu.primary-menu-indented > li > ul.dropdown > li > ul.dropdown > li > ul.dropdown > li > a{ padding-left: 80px !important; }
 	.primary-menu-responsive .primary-menu-menu.primary-menu-indented > li > ul.dropdown > li > ul.dropdown > li > ul.dropdown > li:hover > a{ padding-left: 90px !important; }
-	
+
 	/* Dropdown/megamenu indicators */
 	.primary-menu-responsive .primary-menu-menu li .indicator{
 		width: 60px;
@@ -791,10 +808,12 @@ License: http://codecanyon.net/licenses
 		top: 0;
 		font-size: 14px;
 		line-height: 36px;
+		-webkit-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
 		transform: rotate(90deg);
 		border-left: none;
 	}
-	
+
 	/* Megamenu */
 	.primary-menu-responsive .primary-menu-menu > li > .megamenu{
 		width: 100% !important;
@@ -802,6 +821,7 @@ License: http://codecanyon.net/licenses
 		position: static;
 		border-top: none;
 		border-bottom: solid 1px #f0f0f0;
+		-webkit-box-shadow: none;
 		box-shadow: none;
 	}
 	.primary-menu-responsive .primary-menu-menu > li > .megamenu .megamenu-row [class*="col"]{
@@ -817,7 +837,7 @@ License: http://codecanyon.net/licenses
 	.primary-menu-responsive .primary-menu-menu > li > .megamenu .megamenu-row{
 		margin-top: 0;
 	}
-	
+
 	/* Search field */
 	.primary-menu-responsive .primary-menu-menu > li.search form{
 		width: 100%;
@@ -827,7 +847,7 @@ License: http://codecanyon.net/licenses
 	.primary-menu-responsive .primary-menu-menu > li.search form input[type="text"]{
 		width: 100%;
 	}
-	
+
 	/* Tabs */
 	.primary-menu-responsive .primary-menu-tabs-nav{
 		width: 100%;
@@ -859,100 +879,57 @@ License: http://codecanyon.net/licenses
 
 .zoom-in{
 	-webkit-animation: zoomIn 400ms ease both;
-	-moz-animation: zoomIn 400ms ease both;
-	-o-animation: zoomIn 400ms ease both;
 	animation: zoomIn 400ms ease both;
 }
 @-webkit-keyframes zoomIn {
 	0% { -webkit-transform: scale(1.5); }
 	100% { -webkit-transform: scale(1); }
 }
-@-moz-keyframes zoomIn {
-	0% { -moz-transform: scale(1.5); }
-	100% { -moz-transform: scale(1); }
-}
-@-o-keyframes zoomIn {
-	0% { opacity: 0; -o-transform: scale(1.5); }
-	100% { opacity: 1; -o-transform: scale(1); }
-}
 @keyframes zoomIn {
-	0% { transform: scale(1.5); }
-	100% { transform: scale(1); }
+	0% { -webkit-transform: scale(1.5); transform: scale(1.5); }
+	100% { -webkit-transform: scale(1); transform: scale(1); }
 }
 .zoom-out{
 	-webkit-animation: zoomOut 400ms ease both;
-	-moz-animation: zoomOut 400ms ease both;
-	-o-animation: zoomOut 400ms ease both;
 	animation: zoomOut 400ms ease both;
 }
 @-webkit-keyframes zoomOut {
 	0% { -webkit-transform: scale(.6); }
 	100% { -webkit-transform: scale(1); }
 }
-@-moz-keyframes zoomOut {
-	0% { -moz-transform: scale(.6); }
-	100% { -moz-transform: scale(1); }
-}
-@-o-keyframes zoomOut {
-	0% { -o-transform: scale(.6); }
-	100% { -o-transform: scale(1); }
-}
 @keyframes zoomOut {
-	0% { transform: scale(.6); }
-	100% { transform: scale(1); }
+	0% { -webkit-transform: scale(.6); transform: scale(.6); }
+	100% { -webkit-transform: scale(1); transform: scale(1); }
 }
 .drop-up{
 	-webkit-animation: drop-up 400ms ease both;
-	-moz-animation: drop-up 400ms ease both;
-	-o-animation: drop-up 400ms ease both;
 	animation: drop-up 400ms ease both;
 }
 @-webkit-keyframes drop-up {
 	0% { -webkit-transform: translateY(100px); }
 	100% { -webkit-transform: translateY(0); }
 }
-@-moz-keyframes drop-up {
-	0% { -moz-transform: translateY(100px); }
-	100% { -moz-transform: translateY(0); }
-}
-@-o-keyframes drop-up {
-	0% { -o-transform: translateY(100px); }
-	100% { -o-transform: translateY(0); }
-}
 @keyframes drop-up {
-	0% { transform: translateY(100px); }
-	100% { transform: translateY(0); }
+	0% { -webkit-transform: translateY(100px); transform: translateY(100px); }
+	100% { -webkit-transform: translateY(0); transform: translateY(0); }
 }
 .drop-left{
 	-webkit-animation: drop-left 400ms ease both;
-	-moz-animation: drop-left 400ms ease both;
-	-o-animation: drop-left 400ms ease both;
 	animation: drop-left 400ms ease both;
 }
 @-webkit-keyframes drop-left {
 	0% { -webkit-transform: translateX(-100px); }
 	100% { -webkit-transform: translateX(0); }
 }
-@-moz-keyframes drop-left {
-	0% { -moz-transform: translateX(-100px); }
-	100% { -moz-transform: translateX(0); }
-}
-@-o-keyframes drop-left {
-	0% { -o-transform: translateX(-100px); }
-	100% { -o-transform: translateX(0); }
-}
 @keyframes drop-left {
-	0% { transform: translateX(-100px); }
-	100% { transform: translateX(0); }
+	0% { -webkit-transform: translateX(-100px); transform: translateX(-100px); }
+	100% { -webkit-transform: translateX(0); transform: translateX(0); }
 }
 .swing {
 	-webkit-transform-origin: top center;
-	-moz-transform-origin: top center;
-	-o-transform-origin: top center;
+	-ms-transform-origin: top center;
 	transform-origin: top center;
 	-webkit-animation: swing 400ms ease-out both;
-	-moz-animation: swing 400ms ease-out both;
-	-o-animation: swing 400ms ease-out both;
 	animation: swing 400ms ease-out both;
 }
 @-webkit-keyframes swing {
@@ -963,32 +940,16 @@ License: http://codecanyon.net/licenses
 	80% { -webkit-transform: rotate(-5deg); }
 	100% { -webkit-transform: rotate(0deg); }
 }
-@-moz-keyframes swing {
-	20% { -moz-transform: rotate(15deg); }
-	40% { -moz-transform: rotate(-10deg); }
-	60% { -moz-transform: rotate(5deg); }
-	80% { -moz-transform: rotate(-5deg); }
-	100% { -moz-transform: rotate(0deg); }
-}
-@-o-keyframes swing {
-	20% { -o-transform: rotate(15deg); }
-	40% { -o-transform: rotate(-10deg); }
-	60% { -o-transform: rotate(5deg); }
-	80% { -o-transform: rotate(-5deg); }
-	100% { -o-transform: rotate(0deg); }
-}
 @keyframes swing {
-	20% { transform: rotate(15deg); }
-	40% { transform: rotate(-10deg); }
-	60% { transform: rotate(5deg); }
-	80% { transform: rotate(-5deg); }
-	100% { transform: rotate(0deg); }
+	20% { -webkit-transform: rotate(15deg); transform: rotate(15deg); }
+	40% { -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }
+	60% { -webkit-transform: rotate(5deg); transform: rotate(5deg); }
+	80% { -webkit-transform: rotate(-5deg); transform: rotate(-5deg); }
+	100% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
 }
 
 .flip{
 	-webkit-animation: flip 700ms ease both;
-	-moz-animation: flip 700ms ease both;
-	-o-animation: flip 700ms ease both;
 	animation: flip 700ms ease both;
 }
 @-webkit-keyframes flip {
@@ -1044,8 +1005,6 @@ License: http://codecanyon.net/licenses
 }
 .roll-in{
 	-webkit-animation: roll-in 400ms ease both;
-	-moz-animation: roll-in 400ms ease both;
-	-o-animation: roll-in 400ms ease both;
 	animation: roll-in 400ms ease both;
 }
 @-webkit-keyframes roll-in {
@@ -1078,21 +1037,19 @@ License: http://codecanyon.net/licenses
 }
 .stretch{
 	-webkit-animation: stretch 500ms ease both;
-	-moz-animation: stretch 500ms ease both;
-	-o-animation: stretch 500ms ease both;
 	animation: stretch 500ms ease both;
 	transform-origin: 0% 0%;
 	-ms-transform-origin: 0% 0%;
 	-webkit-transform-origin: 0% 0%;
 }
 @keyframes stretch{
-	0% { transform: scaleX(0.3); }
-	40% { transform: scaleX(1.02); }
-	60% { transform: scaleX(0.98); }
-	80% { transform: scaleX(1.01); }
-	100% { transform: scaleX(0.98); }
-	80% { transform: scaleX(1.01); }
-	100% { transform: scaleX(1); }
+	0% { -webkit-transform: scaleX(0.3); transform: scaleX(0.3); }
+	40% { -webkit-transform: scaleX(1.02); transform: scaleX(1.02); }
+	60% { -webkit-transform: scaleX(0.98); transform: scaleX(0.98); }
+	80% { -webkit-transform: scaleX(1.01); transform: scaleX(1.01); }
+	100% { -webkit-transform: scaleX(0.98); transform: scaleX(0.98); }
+	80% { -webkit-transform: scaleX(1.01); transform: scaleX(1.01); }
+	100% { -webkit-transform: scaleX(1); transform: scaleX(1); }
 }
 @-webkit-keyframes stretch{
 	0% { -webkit-transform: scaleX(0.3); }
@@ -1102,15 +1059,6 @@ License: http://codecanyon.net/licenses
 	100% { -webkit-transform: scaleX(0.98); }
 	80% { -webkit-transform: scaleX(1.01); }
 	100% { -webkit-transform: scaleX(1); }
-}
-@-o-keyframes stretch{
-	0% { -o-transform: scaleX(0.3); }
-	40% { -o-transform: scaleX(1.02); }
-	60% { -o-transform: scaleX(0.98); }
-	80% { -o-transform: scaleX(1.01); }
-	100% { -o-transform: scaleX(0.98); }
-	80% { -o-transform: scaleX(1.01); }
-	100% { -o-transform: scaleX(1); }
 }
 
 
