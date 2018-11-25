@@ -50,54 +50,28 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('site_facebook') ? ' has-error' : '' }}">
-                                <label for="site_facebook" class="col-md-4 control-label pull-left text-center">Site Facebook Link</label>
+                            <div class="form-group{{ $errors->has('site_address') ? ' has-error' : '' }}">
+                                <label for="site_address" class="col-md-4 control-label pull-left text-center">Site Address</label>
 
                                 <div class="col-md-8">
-                                    <input id="site_facebook" type="text" class="form-control" name="site_facebook" value="{{ ($settings->site_facebook) ? $settings->site_facebook : old('site_facebook') }}" autofocus>
+                                    <input id="site_address" type="text" class="form-control" name="site_address" value="{{ ($settings->site_address) ? $settings->site_address : old('site_address') }}" autofocus>
                                     <br/>
-                                    @if ($errors->has('site_facebook'))
+                                    @if ($errors->has('site_address'))
                                         <span class="help-block text-danger">
-                                            <strong>{{ $errors->first('site_facebook') }}</strong>
+                                            <strong>{{ $errors->first('site_address') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('site_twitter') ? ' has-error' : '' }}">
-                                <label for="site_twitter" class="col-md-4 control-label pull-left text-center">Site Twitter Link</label>
+                            <div class="form-group{{ $errors->has('site_subaddress') ? ' has-error' : '' }}">
+                                <label for="site_subaddress" class="col-md-4 control-label pull-left text-center">Site subAddress</label>
 
                                 <div class="col-md-8">
-                                    <input id="site_twitter" type="text" class="form-control" name="site_twitter" value="{{ ($settings->site_twitter) ? $settings->site_twitter :old('site_twitter') }}" autofocus>
+                                    <input id="site_subaddress" type="text" class="form-control" name="site_subaddress" value="{{ ($settings->site_subaddress) ? $settings->site_subaddress :old('site_subaddress') }}" autofocus>
                                     <br/>
-                                    @if ($errors->has('site_twitter'))
+                                    @if ($errors->has('site_subaddress'))
                                         <span class="help-block text-danger">
-                                            <strong>{{ $errors->first('site_twitter') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('site_linkedin') ? ' has-error' : '' }}">
-                                <label for="site_linkedin" class="col-md-4 control-label pull-left text-center">Site Linkedin Link</label>
-
-                                <div class="col-md-8">
-                                    <input id="site_linkedin" type="text" class="form-control" name="site_linkedin" value="{{ ($settings->site_linkedin) ? $settings->site_linkedin :old('site_linkedin') }}" autofocus>
-                                    <br/>
-                                    @if ($errors->has('site_linkedin'))
-                                        <span class="help-block text-danger">
-                                            <strong>{{ $errors->first('site_linkedin') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('site_git') ? ' has-error' : '' }}">
-                                <label for="site_git" class="col-md-4 control-label pull-left text-center">Site GitHub Link</label>
-
-                                <div class="col-md-8">
-                                    <input id="site_git" type="text" class="form-control" name="site_git" value="{{ ($settings->site_git) ? $settings->site_git :old('site_git') }}" autofocus>
-                                    <br/>
-                                    @if ($errors->has('site_git'))
-                                        <span class="help-block text-danger">
-                                            <strong>{{ $errors->first('site_git') }}</strong>
+                                            <strong>{{ $errors->first('site_subaddress') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -106,7 +80,7 @@
                                 <label for="site_desc" class="col-md-4 control-label pull-left text-center">Site Description</label>
 
                                 <div class="col-md-8">
-                                    <textarea name="site_desc" id="site_desc">{{($settings->site_desc) ? $settings->site_desc :old('site_desc')}}</textarea>
+                                    <textarea name="site_desc" class="form-control" id="site_desc" rows="8">{{($settings->site_desc) ? $settings->site_desc :old('site_desc')}}</textarea>
                                     <br/>
                                     @if ($errors->has('site_desc'))
                                         <span class="help-block text-danger">
@@ -119,7 +93,7 @@
                                 <label for="site_tags" class="col-md-4 control-label pull-left text-center">Site Tags</label>
 
                                 <div class="col-md-8">
-                                    <textarea name="site_tags" id="site_tags">{{($settings->site_tags) ? $settings->site_tags :old('site_tags')}}</textarea>
+                                    <textarea name="site_tags" class="form-control" id="site_tags" rows="8">{{($settings->site_tags) ? $settings->site_tags :old('site_tags')}}</textarea>
                                     <br/>
                                     @if ($errors->has('site_tags'))
                                         <span class="help-block text-danger">
@@ -155,37 +129,6 @@
                                             <strong>{{ $errors->first('site_close') }}</strong>
                                         </span>
                                     @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('site_copyright') ? ' has-error' : '' }}">
-                                <label for="site_copyright" class="col-md-4 control-label pull-left text-center">Site Copyrights</label>
-
-                                <div class="col-md-8">
-                                    <textarea name="site_copyright" id="site_copyright">{{($settings->site_copyright) ? $settings->site_copyright :old('site_copyright')}}</textarea>
-                                    <br/>
-                                    @if ($errors->has('site_copyright'))
-                                        <span class="help-block text-danger">
-                                            <strong>{{ $errors->first('site_copyright') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('site_logo') ? ' has-error' : '' }}">
-                                <label for="site_logo" class="col-md-4 control-label pull-left text-center">Site Logo Image</label>
-
-                                <div class="col-md-8">
-                                    <input id="site_logo" accept="image/*" onchange="preview_image(event)" type="file" name="site_logo">
-                                    <br /><br/>
-                                    <img id="output_image" class="img-responsive img-thumbnail col-md-4" src="{{asset('uploads/'.$settings->site_logo)}}" />
-
-                                    <br/><br/>
-                                    @if ($errors->has('site_logo'))
-                                        <span class="help-block text-danger">
-                                            <strong>{{ $errors->first('site_logo') }}</strong>
-                                        </span>
-                                    @endif
-
                                 </div>
                             </div>
 

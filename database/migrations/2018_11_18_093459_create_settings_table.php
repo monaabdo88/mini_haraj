@@ -16,18 +16,14 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('site_name');
-            $table->string('site_logo');
             $table->string('site_mail');
             $table->string('site_phone');
-            $table->string('site_facebook');
-            $table->string('site_twitter');
-            $table->string('site_linkedin');
-            $table->string('site_git');
+            $table->string('site_adress');
+            $table->string('site_subaddress');
             $table->text('site_desc');
             $table->text('site_tags');
             $table->string('site_status');
             $table->text('site_close');
-            $table->text('site_copyright');
             $table->timestamps();
         });
     }

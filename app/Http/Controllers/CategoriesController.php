@@ -39,23 +39,12 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'    => 'required|min:3',
-            'desc'    => 'required',
-            'tags'    => 'required',
-            'cat_img' => 'required|image|mimes:jpg,png,jpeg,gif|max:1000'
+            'name'    => 'required|min:3'
         ]);
-        if($request->hasFile('cat_img')) {
-            $image = $request->cat_img;
-            $img_new = time() . '_' . $image->getClientOriginalName();
-            $image->move('uploads', $img_new);
-        }
         $data = [
             'name'      => $request->name,
-            'desc'      => $request->desc,
-            'tags'      => $request->tags,
             'status'    => $request->status,
             'type'      => $request->type,
-            'image'     => $img_new,
             'slug'      => str_slug($request->name)
         ];
         $cats = Category::create($data);
@@ -97,28 +86,14 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name'    => 'required|min:3',
-            'desc'    => 'required',
-            'tags'    => 'required',
-            'cat_img' => 'image|mimes:jpg,png,jpeg,gif|max:1000'
+            'name'    => 'required|min:3'
         ]);
         $data = [
             'name'      => $request->name,
-            'desc'      => $request->desc,
-            'tags'      => $request->tags,
             'type'      => $request->type,
             'status'    => $request->status,
             'slug'      => str_slug($request->name)
         ];
-        if($request->cat_img) {
-            if ($request->hasFile('cat_img')) {
-                $image = $request->cat_img;
-                $img_new = time() . '_' . $image->getClientOriginalName();
-                $image->move('uploads', $img_new);
-            }
-            $data['image'] = $img_new;
-        }
-
         $setting = Category::where('id',$id)->update($data);
         Session::flash('success','Category Updated Successfully');
         return redirect('/admin/categories/');

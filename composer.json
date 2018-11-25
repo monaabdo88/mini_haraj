@@ -17,6 +17,9 @@
         "phpunit/phpunit": "~5.0"
     },
     "autoload": {
+        "files": [
+            "app/help/helper.php"
+        ],
         "classmap": [
             "database"
         ],

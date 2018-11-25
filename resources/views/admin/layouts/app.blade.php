@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{config('app.name')}} | @yield('title')</title>
+    <title>{{get_settings()->site_name}} | @yield('title')</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -149,10 +149,7 @@
     </script>
     <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
     <script>
-        CKEDITOR.replace( 'site_desc' );
-        CKEDITOR.replace( 'site_tags' );
         CKEDITOR.replace( 'site_close' );
-        CKEDITOR.replace( 'site_copyright' );
         CKEDITOR.replace( 'tags' );
         CKEDITOR.replace( 'desc' );
     </script>

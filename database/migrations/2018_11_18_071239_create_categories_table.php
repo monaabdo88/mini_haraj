@@ -18,9 +18,6 @@ class CreateCategoriesTable extends Migration
             $table->integer('type');
             $table->string('name');
             $table->boolean('status');
-            $table->string('image');
-            $table->string('tags');
-            $table->text('desc');
             $table->string('slug');
             $table->softDeletes();
             $table->timestamps();

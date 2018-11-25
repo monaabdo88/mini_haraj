@@ -22,7 +22,6 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
                             <th>Name</th>
                             <th>Status</th>
                             <th>Options</th>
@@ -32,7 +31,6 @@
                         @foreach($cats as $cat)
                             <tr>
                                 <td>{{$cat->id}}</td>
-                                <td><img src="{{asset('uploads/'.$cat->image)}}" class="img-responsive img-thumbnail" width="150"/></td>
                                 <td>{{$cat->name}}</td>
                                 <td>
                                     @if($cat->status == 0)
