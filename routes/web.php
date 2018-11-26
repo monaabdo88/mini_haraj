@@ -1,26 +1,19 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+//Auth Routes
+Auth::routes();
+//Frontend Routes
 Route::get('/', [
     'uses' => 'FrontendController@index',
     'as'   => 'index'
 ]);
 Route::get('/post/{slug}','FrontendController@singlePost');
 Route::get('/cats/{slug}','FrontendController@singleCat');
+Route::get('/tag/{id}','FrontendController@singleTag');
 Route::get('/home', function () {
     return view('home');
 });
-Auth::routes();
+Route::get('/results/','FrontendController@search');
+// Admin Panel Routes
 Route::group(['prefix'=>'admin','middleware'=>['auth','web','admin']],function(){
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 	Route::resource('/categories','CategoriesController');
