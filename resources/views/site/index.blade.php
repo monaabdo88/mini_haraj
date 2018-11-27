@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
+    <br/><br/><br/>
     <div class="container up-container">
         <div class="row">
             <div class="col-lg-2"></div>
@@ -7,7 +8,7 @@
                 <article class="hentry post post-standard has-post-thumbnail sticky">
 
                     <div class="post-thumb">
-                        <img src="{{asset('uploads/'.first_post()->featured)}}" alt="{{first_post()->name}}" style="height: 310px">
+                        <img src="{{asset('uploads/'.first_post()->featured)}}" alt="{{first_post()->name}}" style="height: 388px">
                         <div class="overlay"></div>
                         <a href="{{asset('uploads/'.first_post()->featured)}}" class="link-image js-zoom-image">
                             <i class="seoicon-zoom"></i>
