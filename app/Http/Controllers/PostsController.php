@@ -57,7 +57,8 @@ class PostsController extends Controller
             'status'     => $request->status,
             'category_id'=> $request->type,
             'featured'   => $img_new,
-            'slug'       => str_slug($request->name)
+            'slug'       => str_slug($request->name),
+            'user_id'    => '0'
         ];
         $post = Post::create($data);
         $post->tags()->attach($request->tags);
@@ -109,7 +110,8 @@ class PostsController extends Controller
             'content'     => $request->desc,
             'category_id' => $request->type,
             'status'      => $request->status,
-            'slug'        => str_slug($request->name)
+            'slug'        => str_slug($request->name),
+            'user_id'    => '0'
         ];
         if($request->featured) {
             if ($request->hasFile('featured')) {

@@ -6,6 +6,7 @@ use App\Profile;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -73,7 +74,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-        $user = Auth::user();
         if($data['avatar']) {
                 $image = $data['avatar'];
                 $img_new = time() . '_' . $image->getClientOriginalName();
@@ -83,10 +83,11 @@ class RegisterController extends Controller
             'about'    => $data['about'],
             'twitter'  => $data['twitter'],
             'facebook' => $data['facebook'],
-            'user_id'  => $user->id,
+            'user_id'  => $users->id,
             'gender'   => $data['gender'],
             'avatar'   => $img_new
         ]);
+        Session::flash('success','You have Register Successfully');
         return $users;
     }
 }

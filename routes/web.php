@@ -1,5 +1,8 @@
 <?php
 //Auth Routes
+use Illuminate\Support\Facades\Session;
+
+
 Auth::routes();
 //Frontend Routes
 Route::get('/', [
@@ -9,10 +12,25 @@ Route::get('/', [
 Route::get('/post/{slug}','FrontendController@singlePost');
 Route::get('/cats/{slug}','FrontendController@singleCat');
 Route::get('/tag/{id}','FrontendController@singleTag');
+Route::get('/results/','FrontendController@search');
+Route::post('/subscribe','SubscribeController@index');
+Route::group(['middleware'=>['auth','web']],function() {
+    Route::resource('/profile','ProfilesController');
+    Route::get('/posts/create','FrontendController@create_post');
+    Route::post('/posts/store','FrontendController@store');
+    Route::get('/myPosts/{id}','FrontendController@UserPosts');
+    Route::get('/posts/{id}/edit','FrontendController@edit');
+    Route::match(['put', 'patch'],'/posts/{id}','FrontendController@update');
+    Route::get('/posts/delete/{id}',[
+        'uses' => 'FrontendController@destroy',
+        'as' => 'posts.delete'
+    ]);
+});
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', function () {
     return view('home');
 });
-Route::get('/results/','FrontendController@search');
 // Admin Panel Routes
 Route::group(['prefix'=>'admin','middleware'=>['auth','web','admin']],function(){
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
@@ -66,8 +84,3 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','web','admin']],function()
     Route::get('/postsTrash','PostsController@postsTrash');
     Route::get('/tagsTrash','TagController@tagsTrash');
 });
-Route::group(['middleware'=>['auth','web']],function() {
-    Route::resource('/profile','ProfilesController');
-});
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');

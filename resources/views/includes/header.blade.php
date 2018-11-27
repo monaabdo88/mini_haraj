@@ -37,7 +37,7 @@
                         @else
                             <li>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }}
                                 </a>
 
                                 <ul class="dropdown">
@@ -45,6 +45,8 @@
                                     @if(Auth::user()->admin == 1)
                                         <li class="hover-ver2"><a href="{{ url('/admin/dashboard') }}">Dashboard</a> </li>
                                     @endif
+                                    <li class="hover-ver2"><a href="{{url('/posts/create')}}">Add Post</a> </li>
+                                    <li class="hover-ver2"><a href="{{url('/myPosts/'.Auth::user()->id)}}">My Posts</a> </li>
                                     <li class="hover-ver2">
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

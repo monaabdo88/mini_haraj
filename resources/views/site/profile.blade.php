@@ -1,14 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('content')
-    <div class="container">
-        <div class="row">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <div class="content-wrapper up-container">
+        <!-- Stunning Header -->
+        <div class="stunning-header stunning-header-bg-lightviolet">
+            <div class="stunning-header-content">
+                <h1 class="stunning-header-title">Edit Profile</h1>
+            </div>
+        </div>
+
+        <!-- End Stunning Header -->
+        <div class="container">
+            <div class="row medium-padding80">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">Update Profile</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('profile.update',$user->id) }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="POST" action="{{ route('profile.update',Auth::user()->id) }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <input name="_method" type="hidden" value="PATCH">
 
@@ -129,28 +139,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('script')
-    <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-
-    <script>
-        CKEDITOR.replace( 'about' );
-        function preview_image(event)
-        {
-            var reader = new FileReader();
-            reader.onload = function()
-            {
-                var output = document.getElementById('output_image');
-                output.src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
-    @if (count($errors) > 0)
-        @foreach($errors->all() as $error)
-            <script>
-                toastr.error('{{$error}}');
-            </script>
-        @endforeach
-    @endif
 @endsection

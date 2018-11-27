@@ -7,7 +7,7 @@
                 <article class="hentry post post-standard has-post-thumbnail sticky">
 
                     <div class="post-thumb">
-                        <img src="{{asset('uploads/'.first_post()->featured)}}" alt="{{first_post()->name}}">
+                        <img src="{{asset('uploads/'.first_post()->featured)}}" alt="{{first_post()->name}}" style="height: 310px">
                         <div class="overlay"></div>
                         <a href="{{asset('uploads/'.first_post()->featured)}}" class="link-image js-zoom-image">
                             <i class="seoicon-zoom"></i>
@@ -39,7 +39,7 @@
 
                                 <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="{{url('/cat/'.first_post()->category->id)}}">{{first_post()->category->name}}</a>
+                                            <a href="{{url('/cats/'.first_post()->category->id)}}">{{first_post()->category->name}}</a>
                                         </span>
 
                                 <span class="post__comments">
@@ -94,7 +94,7 @@
 
                                     <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="{{url('/cat/'.$post->category->id)}}">{{$post->category->name}}</a>
+                                            <a href="{{url('/cats/'.$post->category->id)}}">{{$post->category->name}}</a>
                                         </span>
 
                                     <span class="post__comments">
@@ -138,7 +138,7 @@
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <div class="case-item">
                                                 <div class="case-item__thumb">
-                                                    <img src="{{asset('uploads/'.$post->featured)}}" alt="{{$post->title}}">
+                                                    <img src="{{asset('uploads/'.$post->featured)}}" alt="{{$post->title}}" style="height: 250px">
                                                 </div>
                                                 <h6 class="case-item__title"><a href="{{url('/post/'.$post->slug)}}">{{$post->title}}</a></h6>
                                             </div>

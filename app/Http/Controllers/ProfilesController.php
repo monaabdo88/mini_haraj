@@ -49,7 +49,11 @@ class ProfilesController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        if($id != Auth::user()->id) {
+            Session::flash('error_msg','you do not have permission to log to this page');
+            return redirect('/');
+        }
+        $user = User::findOrFail(Auth::user()->id);
         return view('site.profile')->with('user',$user);
     }
 
@@ -61,7 +65,7 @@ class ProfilesController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail(Auth::user()->id);
         return view('site.profile')->with('user',$user);
     }
 

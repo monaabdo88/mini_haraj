@@ -27,15 +27,9 @@
                         <a href="{{url('/admin/tags')}}"> <i class="menu-icon fa fa-hashtag"></i>Tags</a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-comments"></i>Comments</a>
-                    </li>
-                    <li>
                         <a href="{{url('/admin/users')}}"> <i class="menu-icon fa fa-users"></i>Users</a>
                     </li>
-                    <li>
-                        <a href="#"> <i class="menu-icon fa fa-envelope"></i>Mails</a>
-                    
-                    </li>
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
