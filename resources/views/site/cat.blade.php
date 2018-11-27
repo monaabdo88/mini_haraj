@@ -6,7 +6,7 @@
 
     <div class="stunning-header stunning-header-bg-lightviolet">
         <div class="stunning-header-content">
-            <h1 class="stunning-header-title">Category: {{$cat->name}}</h1>
+            <h1 class="stunning-header-title">Category: {{$catName->name}}</h1>
         </div>
     </div>
 
@@ -21,7 +21,8 @@
 
                 <div class="row">
                     <div class="case-item-wrap">
-                        @foreach($cat->posts()->where('status',1)->get() as $post)
+
+                        @foreach($cat as $post)
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="case-item">
                                     <div class="case-item__thumb">

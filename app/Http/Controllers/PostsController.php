@@ -28,7 +28,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $cats = Category::all();
+        $cats = Category::where('type',0)->get();
         $tags = Tag::all();
         return view('admin.posts.create')->with(['cats'=>$cats,'tags'=>$tags]);
     }
@@ -51,14 +51,24 @@ class PostsController extends Controller
             $img_new = time() . '_' . $image->getClientOriginalName();
             $image->move('uploads', $img_new);
         }
+        $cat = Category::where('id',$request->category)->first();
+        if($cat->type == 0){
+            $sub_cat = 0;
+            $cat_id = $request->category;
+        }else{
+            $sub = Category::where('id',$cat->type)->first();
+            $cat_id = $sub->id;
+            $sub_cat = $request->category;
+        }
         $data = [
             'title'      => $request->name,
             'content'    => $request->desc,
             'status'     => $request->status,
-            'category_id'=> $request->type,
+            'category_id'=> $cat_id,
             'featured'   => $img_new,
             'slug'       => str_slug($request->name),
-            'user_id'    => '0'
+            'user_id'    => 1,
+            'sub_id'     => $sub_cat,
         ];
         $post = Post::create($data);
         $post->tags()->attach($request->tags);
@@ -86,7 +96,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        $cats = Category::all();
+        $cats = Category::where('type',0)->get();
         $tags = Tag::all();
         return view('admin.posts.edit')->with(['post'=>$post,'cats'=>$cats,'tags'=>$tags]);
     }
@@ -105,13 +115,23 @@ class PostsController extends Controller
             'desc'      => 'required',
             'featured'  => 'image|mimes:jpg,png,jpeg,gif|max:1000'
         ]);
+        $cat = Category::where('id',$request->category)->first();
+        if($cat->type == 0){
+            $sub_cat = 0;
+            $cat_id = $request->category;
+        }else{
+            $sub = Category::where('id',$cat->type)->first();
+            $cat_id = $sub->id;
+            $sub_cat = $request->category;
+        }
         $data = [
             'title'       => $request->name,
             'content'     => $request->desc,
-            'category_id' => $request->type,
+            'category_id' => $cat_id,
             'status'      => $request->status,
             'slug'        => str_slug($request->name),
-            'user_id'    => '0'
+            'user_id'     => 1,
+            'sub_id'      => $sub_cat
         ];
         if($request->featured) {
             if ($request->hasFile('featured')) {

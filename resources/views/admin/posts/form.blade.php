@@ -58,17 +58,26 @@
     <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
         <label for="image" class="col-md-4 control-label pull-left text-center">Post Category</label>
         <div class="col-md-8">
-            <select name="type" class="form-control">
+            <select name="category" class="form-control">
+
                 @foreach($cats as $main)
+
                     <option value="{{$main->id}}"
                             {{ (isset($post->category_id) && $post->category_id == $main->id)? 'selected' : '' }}>
                         {{$main->name}}
                     </option>
+                        @foreach(getsubCats($main->id) as $sub)
+                            <option value="{{$sub->id}}"
+                                    {{ (isset($post->sub_id) && $post->sub_id == $sub->id)? 'selected' : '' }}>
+                                --  {{$sub->name}}
+                            </option>
+                            @endforeach
                 @endforeach
             </select>
             <br/>
         </div>
     </div>
+
     <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
         <label for="image" class="col-md-4 control-label pull-left text-center">Post Image</label>
 
@@ -100,4 +109,5 @@
                 </script>
             @endforeach
         @endif
+
 @endsection

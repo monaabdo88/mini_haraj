@@ -23,3 +23,6 @@ function get_posts_index(){
 function getCount($model){
     return count($model::all());
 }
+function getsubCats($id){
+    return Category::where('type',$id)->get();
+}

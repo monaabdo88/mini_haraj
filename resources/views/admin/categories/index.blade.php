@@ -23,6 +23,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
+                            <th>Type</th>
                             <th>Status</th>
                             <th>Options</th>
                         </tr>
@@ -32,6 +33,7 @@
                             <tr>
                                 <td>{{$cat->id}}</td>
                                 <td>{{$cat->name}}</td>
+                                <td>@if($cat->type == 0) Main Category @else Sub Category @endif</td>
                                 <td>
                                     @if($cat->status == 0)
                                         <button class="btn btn-warning">Not Active</button>

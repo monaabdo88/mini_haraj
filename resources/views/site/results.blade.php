@@ -16,7 +16,7 @@
 
 
         <div class="container">
-            <div class="row medium-padding120">
+            <div class="row medium-padding80">
                 <main class="main">
 
                     <div class="row">

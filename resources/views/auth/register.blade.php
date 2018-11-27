@@ -1,8 +1,23 @@
 @extends('layouts.frontend')
 @section('content')
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<div class="container up-container">
-    <div class="row">
+<div class="content-wrapper up-container">
+
+    <!-- Stunning Header -->
+
+    <div class="stunning-header stunning-header-bg-lightviolet">
+        <div class="stunning-header-content">
+            <h1 class="stunning-header-title">Register</h1>
+        </div>
+    </div>
+
+    <!-- End Stunning Header -->
+
+    <!-- Post Details -->
+
+
+    <div class="container">
+        <div class="row medium-padding80">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
@@ -128,6 +143,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
 @section('script')

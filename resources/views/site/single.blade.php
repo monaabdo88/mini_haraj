@@ -16,7 +16,7 @@
 
 
     <div class="container">
-        <div class="row medium-padding120">
+        <div class="row medium-padding80">
             <main class="main">
                 <div class="col-lg-10 col-lg-offset-1">
                     <article class="hentry post post-standard-details">
@@ -51,9 +51,9 @@
 
                                 <span class="category">
                                 <i class="seoicon-tags"></i>
-                                    @if($post->category->type != 0)
+                                    @if($post->sub_id != 0)
                                         <a href="{{url('/cats/'.$cat->id)}}">{{$cat->name}}</a> ,
-                                        <a href="{{url('/cats/'.$post->category->id)}}">{{$post->category->name}}</a>
+                                        <a href="{{url('/cats/'.$sub_cat->id)}}">{{$sub_cat->name}}</a>
                                     @else
                                         <a href="{{url('/cats/'.$post->category->id)}}">{{$post->category->name}}</a>
                                     @endif
@@ -93,7 +93,7 @@
                                 <h5 class="author-name">{{$post->user->name}}</h5>
                                 <p class="author-info">@if($post->user->id == 1) Admin @else User @endif</p>
                             </div>
-                            <p class="text">{{$post->user->profile->about}}
+                            <p class="text">{!! $post->user->profile->about !!}
                             </p>
                             <div class="socials">
 
